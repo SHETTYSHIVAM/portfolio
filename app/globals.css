@@ -1,26 +1,185 @@
 @import "tailwindcss";
+/* ============================================================
+   globals.css — Tailwind v4 Theme Configuration
+   Portfolio: Shivam Shetty — AI/ML Engineer
+   ============================================================
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+   DESIGN PHILOSOPHY: "GEOSPATIAL CYBER-MINIMALISM"
+   -------------------------------------------------
+   An engineering dashboard aesthetic built around satellite data 
+   monitoring and technical precision. Rich midnight slate backgrounds, 
+   sharp Satellite Emerald accents, and Atmospheric Blue highlights.
+   
+   Maintains a crisp, low-latency, research-documentation profile.
+
+   HOW TO CUSTOMISE
+   ----------------
+   All theme tokens live in the @theme block below.
+   Dark / light variants are mapped via variables inside @layer base.
+   Toggle is driven by: <html data-theme="dark"> or "light"
+
+   ============================================================ */
+
+/* ─── Google Fonts ──────────────────────────────────────────
+   1. Plus Jakarta Sans — Clean, high-readability headers
+   2. JetBrains Mono   — Metrics, dashboard numbers, code text
+   3. Inter            — Standard layout, paragraphs, lists
+   ─────────────────────────────────────────────────────────── */
+
+@theme {
+  /* ── Fonts ───────────────────────────────────────────────── */
+  --font-display: "Plus Jakarta Sans", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --font-sans: "Inter", sans-serif;
+
+  /* ── Dark Mode Design Tokens (Default) ─────────────────────
+     BACKGROUNDS
+     bg-base      — Deep Space Midnight Slate         #0b0f19
+     bg-surface   — Satellite Console Panels          #111827  gray-900
+     bg-overlay   — Isolated terminal arrays          #070a12  extra-dark
+
+     BORDERS
+     border-base  — Grid matrices & dividers          #1f2937  gray-800
+     border-muted — Low-priority system margins       #374151  gray-700
+
+     TEXT
+     text-primary   — High-contrast readings          #e5e7eb  gray-200
+     text-secondary — Documentation body text         #9ca3af  gray-400
+     text-muted     — Matrix indices, captions        #6b7280  gray-500
+     text-faint     — Decorative grids                #4b5563  gray-600
+
+     ACCENTS (Geospatial Cyber Palette)
+     accent         — Satellite Emerald Core          #00ffa3  laser neon green
+     accent-hover   — Active glow threshold           #10b981  emerald-500
+     utility        — Atmospheric Secondary Blue      #3b82f6  electric-blue
+
+     STATUSES (Verification Badges)
+     status-gold    — Peer-reviewed research, IEEE    #f59e0b  amber-500
+     status-green   — Active/Deployed pipeline        #10b981  emerald-500
+     status-muted   — General competitive indexing    #6b7280  gray-500
+     ---------------------------------------------------------- */
+
+  /* — Backgrounds */
+  --color-bg-base: #0b0f19;
+  --color-bg-surface: #111827;
+  --color-bg-overlay: #070a12;
+
+  /* — Borders */
+  --color-border-base: #1f2937;
+  --color-border-muted: #374151;
+
+  /* — Text */
+  --color-text-primary: #e5e7eb;
+  --color-text-secondary: #9ca3af;
+  --color-text-muted: #6b7280;
+  --color-text-faint: #4b5563;
+
+  /* — Accents */
+  --color-accent: #00ffa3;
+  --color-accent-hover: #10b981;
+  --color-utility: #3b82f6;
+
+  /* — Status */
+  --color-status-gold: #f59e0b;
+  --color-status-green: #10b981;
+  --color-status-muted: #6b7280;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+/* ─── Base Layer ─────────────────────────────────────────────
+   Root variable assignments and theme runtime states.
+   ─────────────────────────────────────────────────────────── */
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  /* ── Dark theme (Default System State) ───────────────────── */
+  :root,
+  [data-theme="dark"] {
+    --bg-base: #0b0f19;
+    --bg-surface: #111827;
+    --bg-overlay: #070a12;
+
+    --border-base: #1f2937;
+    --border-muted: #374151;
+
+    --text-primary: #e5e7eb;
+    --text-secondary: #9ca3af;
+    --text-muted: #6b7280;
+    --text-faint: #4b5563;
+
+    --accent: #00ffa3;
+    --accent-hover: #10b981;
+    --utility: #3b82f6;
+
+    --status-gold: #f59e0b;
+    --status-green: #10b981;
+    --status-muted: #6b7280;
   }
-}
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  /* ── Light theme (Contrasted Fallback) ─────────────────────
+     Emerald drops to deep forest green for high contrast text 
+     accessibility on white sheets. 
+     ───────────────────────────────────────────────────────── */
+  [data-theme="light"] {
+    --bg-base: #ffffff;
+    --bg-surface: #f9fafb;
+    --bg-overlay: #f3f4f6;
+
+    --border-base: #e5e7eb;
+    --border-muted: #d1d5db;
+
+    --text-primary: #111827;
+    --text-secondary: #374151;
+    --text-muted: #6b7280;
+    --text-faint: #9ca3af;
+
+    --accent: #059669; /* Deep contrast Forest Emerald */
+    --accent-hover: #047857;
+    --utility: #2563eb;
+
+    --status-gold: #d97706;
+    --status-green: #059669;
+    --status-muted: #6b7280;
+  }
+
+  /* ── Global Document Rule Resets ────────────────────────── */
+  html {
+    font-family: var(--font-sans);
+    background-color: var(--bg-base);
+    color: var(--text-primary);
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--bg-base);
+    color: var(--text-primary);
+  }
+
+  /* System Level Typography Overrides */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+  }
+
+  code, pre, .terminal-text {
+    font-family: var(--font-mono);
+  }
+
+  /* Low-profile cyber scrollbar configuration */
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--bg-base);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--border-base);
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--border-muted);
+  }
+
+  /* Custom text selections highlighted with an emerald tint */
+  ::selection {
+    background: rgba(0, 255, 163, 0.15);
+    color: #ffffff;
+  }
 }
