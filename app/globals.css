@@ -83,6 +83,17 @@
   --color-status-gold: #f59e0b;
   --color-status-green: #10b981;
   --color-status-muted: #6b7280;
+
+  --keyframes-pulse-ring: {
+    from {
+      transform: scale(1);
+      opacity: 1;
+    }
+    to {
+      transform: scale(1.5);
+      opacity: 0;
+    }
+  };
 }
 
 /* ─── Base Layer ─────────────────────────────────────────────
@@ -151,6 +162,7 @@
   body {
     background-color: var(--bg-base);
     color: var(--text-primary);
+    cursor: none;
   }
 
   /* System Level Typography Overrides */

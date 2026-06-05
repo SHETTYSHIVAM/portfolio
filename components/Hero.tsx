@@ -114,7 +114,7 @@ const Hero: React.FC = () => {
 
             {/* Actions */}
             <div className="flex gap-3">
-              <AccentButton href="/projects">View Projects →</AccentButton>
+              <AccentButton href="/about#resume-request-section">Download Resume →</AccentButton>
               <Link
                 href="/contact"
                 className="font-mono text-[0.65rem] tracking-widest px-6 py-2.5

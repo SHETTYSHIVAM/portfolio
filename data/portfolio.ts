@@ -142,7 +142,7 @@ export const portfolio: Portfolio = {
   education: {
     degree: "B.E. in Artificial Intelligence and Machine Learning",
     institution: "Shri Madhwa Vadiraja Institute of Technology",
-    shortName: "SMVIT",
+    shortName: "SMVITM",
     location: "Udupi, Karnataka",
     duration: "2023 – 2027",
     cgpa: null,

@@ -1,8 +1,7 @@
 "use server";
 
 import { Resend } from "resend";
-import fs from "fs";
-import path from "path";
+import { portfolio } from "@/data/portfolio";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -16,14 +15,14 @@ export async function sendResumeAction(formData: FormData) {
   }
 
   try {
-    // Read PDF from public folder
-    const filePath = path.join(process.cwd(), "public", "resume", "shivam_shetty_resume.pdf");
+    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://shivamshetty.tech";
+    const resumePublicUrl = `${baseUrl}/resume/shivam_shetty_resume.pdf`;
 
-    const pdfBuffer = fs.readFileSync(filePath);
-
-    const data = await resend.emails.send({
-      from: "Portfolio <onboarding@resend.dev>",
-      to: email,
+    // CRUCIAL CHANGE: Destructure BOTH { data, error } from the SDK response
+    const { data, error } = await resend.emails.send({
+      from: "Shivam Shetty <resume@shivamshetty.tech>",
+      to: [email], // The SDK prefers an array or clean string array
+      replyTo: portfolio.personal.email,
       subject: `Requested Resume: ${subject}`,
       html: `
         <p>Hi ${name},</p>
@@ -33,20 +32,23 @@ export async function sendResumeAction(formData: FormData) {
       attachments: [
         {
           filename: "ShivamShettyResume.pdf",
-          content: pdfBuffer,
+          path: resumePublicUrl, 
         },
       ],
     });
 
-    console.log("Email sent:", data);
+    // Capture the hidden API error manually
+    if (error) {
+      console.error("Resend API Validation Error:", error);
+      return { success: false, error: error.message };
+    }
 
+    console.log("Email dispatched successfully! ID:", data?.id);
     return { success: true, data };
-  } catch (error: any) {
-    console.error("Resend Error:", error);
 
-    return {
-      success: false,
-      error: error.message || "Failed to dispatch email.",
-    };
+  } catch (err: any) {
+    // This only catches network drops/crashes, not API rejections
+    console.error("Fatal Server Error:", err);
+    return { success: false, error: err.message || "Failed to dispatch email." };
   }
 }

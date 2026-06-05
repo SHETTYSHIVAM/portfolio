@@ -108,7 +108,7 @@ export default async function ProjectDetail({ params }: ProjectPageProps) {
             </h2>
 
             <div className="bg-surface border border-base rounded-md p-6">
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-4">
+              <div className="grid grid-cols-1 text-wrap sm:grid-cols-3 gap-6 mb-4">
                 {[
                   ["Name", project.dataset.name],
                   ["Metadata Matrix Size", project.dataset.size],
@@ -120,7 +120,7 @@ export default async function ProjectDetail({ params }: ProjectPageProps) {
                       <p className="text-[10px] text-muted font-mono tracking-wider uppercase mb-1">
                         {label}
                       </p>
-                      <p className="text-sm font-medium text-primary">
+                      <p className="text-sm font-medium text-primary wrap-break-word">
                         {value}
                       </p>
                     </div>
