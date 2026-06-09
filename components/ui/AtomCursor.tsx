@@ -5,10 +5,39 @@ export default function AtomCursor() {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [hovering, setHovering] = useState(false);
   const [clicking, setClicking] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const animationFrameRef = useRef<number>(0);
   const lastPositionRef = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
+    // Detect if device is mobile
+    const checkIfMobile = () => {
+      // Check for touch capability
+      const hasTouch = () => {
+        return (
+          window.matchMedia("(pointer:coarse)").matches ||
+          navigator.maxTouchPoints > 0 ||
+          "ontouchstart" in window
+        );
+      };
+      
+      // Check for small screen size
+      const isSmallScreen = window.innerWidth < 768;
+      
+      setIsMobile(hasTouch() || isSmallScreen);
+    };
+
+    checkIfMobile();
+    window.addEventListener("resize", checkIfMobile);
+
+    return () => {
+      window.removeEventListener("resize", checkIfMobile);
+    };
+  }, []);
+
+  useEffect(() => {
+    // Don't attach mouse listeners on mobile
+    if (isMobile) return;
     const handleMouseMove = (e: MouseEvent) => {
       lastPositionRef.current = { x: e.clientX, y: e.clientY };
 
@@ -56,20 +85,22 @@ export default function AtomCursor() {
 
   return (
     <>
-      {/* Hide default cursor */}
-      <style>{`
-        * {
-          cursor: none !important;
-        }
-      `}</style>
+      {!isMobile && (
+        <>
+          {/* Hide default cursor */}
+          <style>{`
+            * {
+              cursor: none !important;
+            }
+          `}</style>
 
-      <div
-        className="fixed top-0 left-0 z-50 pointer-events-none"
-        style={{
-          transform: `translate(${position.x}px, ${position.y}px)`,
-          willChange: "transform",
-        }}
-      >
+          <div
+            className="fixed top-0 left-0 z-50 pointer-events-none"
+            style={{
+              transform: `translate(${position.x}px, ${position.y}px)`,
+              willChange: "transform",
+            }}
+          >
         {/* Glow effect outer ring */}
         <div
           className={`absolute inset-0 -translate-x-1/2 -translate-y-1/2 transition-all duration-200
@@ -191,6 +222,8 @@ export default function AtomCursor() {
           }
         `}</style>
       </div>
+        </>
+      )}
     </>
   );
 }
