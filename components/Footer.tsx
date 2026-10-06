@@ -39,17 +39,23 @@ const Footer = () => {
             </p>
 
             <div className="flex flex-col gap-2">
-              {["Home", "About", "Projects", "Contact"].map((item) => (
+              {[
+                { label: "Home", href: "/" },
+                { label: "About", href: "/about" },
+                { label: "Projects", href: "/projects" },
+                { label: "Achievements", href: "/achievements" },
+                { label: "Contact", href: "/contact" },
+              ].map((item) => (
                 <Link
-                  key={item}
-                  href={item.toLocaleLowerCase()}
+                  key={item.label}
+                  href={item.href}
                   className="
                     text-sm text-text-secondary text-left
                     hover:text-text-primary
                     transition-colors duration-200
                   "
                 >
-                  {item}
+                  {item.label}
                 </Link>
               ))}
             </div>

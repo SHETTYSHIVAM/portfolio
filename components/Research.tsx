@@ -15,7 +15,7 @@ const Research: React.FC = () => {
           accent="Publications"
         />
 
-        <div className="mt-10 bg-bg-surface border border-border-base border-l-[3px] border-l-accent rounded-sm p-8 max-w-2xl">
+        <div className="mt-10 bg-bg-surface border border-border-base border-l-[3px] border-l-accent rounded-md p-8 max-w-2xl shadow-sm">
           {/* Venue */}
           <div className="font-mono text-[0.65rem] tracking-[0.15em] text-status-gold mb-3">
             {pub.venue.toUpperCase()} · {pub.year}
@@ -34,7 +34,7 @@ const Research: React.FC = () => {
                 className={
                   a === "Shivam Shetty"
                     ? "text-text-secondary"
-                    : "text-text-faint"
+                    : "text-text-muted"
                 }
               >
                 {a}

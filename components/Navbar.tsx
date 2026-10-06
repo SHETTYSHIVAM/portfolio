@@ -1,6 +1,9 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import { FaGithub } from "react-icons/fa";
+import ThemeToggle from "@/components/ui/ThemeToggle";
+import portfolio from "@/data/portfolio";
 
 const Navbar: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -34,6 +37,7 @@ const Navbar: React.FC = () => {
     { label: "Home", link: "/" },
     { label: "About", link: "/about" },
     { label: "Projects", link: "/projects" },
+    { label: "Achievements", link: "/achievements" },
     { label: "Contact", link: "/contact" },
   ];
 
@@ -43,7 +47,7 @@ const Navbar: React.FC = () => {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300
       ${
         scrolled
-          ? "bg-bg-surface/70 backdrop-blur-xl border-b border-border-base"
+          ? "bg-bg-base/80 backdrop-blur-xl border-b border-border-base"
           : "bg-transparent border-b border-transparent"
       }`}
     >
@@ -51,13 +55,13 @@ const Navbar: React.FC = () => {
         {/* Logo */}
         <Link
           href="/"
-          className="font-mono text-xs tracking-widest text-accent hover:text-accent-hover transition-colors"
+          className="font-mono text-xs tracking-widest text-text-primary hover:text-accent transition-colors"
         >
           shivamshetty
         </Link>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-8 group">
+        <div className="hidden md:flex items-center gap-8">
           {navItems.map((item) => (
             <Link
               key={item.label}
@@ -70,27 +74,47 @@ const Navbar: React.FC = () => {
               <span className="absolute left-0 -bottom-1 w-0 h-px bg-accent transition-all duration-300 group-hover:w-full"></span>
             </Link>
           ))}
+
+          {/* Separator */}
+          <div className="h-4 w-px bg-border-base" />
+
+          {/* GitHub */}
+          <a
+            href={portfolio.links.github}
+            target="_blank"
+            rel="noreferrer"
+            className="text-text-muted hover:text-text-primary transition-colors duration-200"
+            aria-label="GitHub"
+          >
+            <FaGithub size={16} />
+          </a>
+
+          {/* Theme Toggle */}
+          <ThemeToggle />
         </div>
 
         {/* Hamburger */}
-        <button
-          onClick={() => setMenuOpen(!menuOpen)}
-          className="md:hidden relative w-6 h-6 flex items-center justify-center z-50"
-          aria-label="Toggle Menu"
-        >
-          <span
-            className={`absolute w-5 h-[1.5px] bg-text-primary transition-all duration-300
+        <div className="flex md:hidden items-center gap-3">
+          <ThemeToggle />
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="relative w-6 h-6 flex items-center justify-center z-50"
+            aria-label="Toggle Menu"
+          >
+            <span
+              className={`absolute w-5 h-[1.5px] bg-text-primary transition-all duration-300
             ${menuOpen ? "rotate-45 translate-y-0" : "-translate-y-1.5"}`}
-          />
-          <span
-            className={`absolute w-5 h-[1.5px] bg-text-primary transition-all duration-300
+            />
+            <span
+              className={`absolute w-5 h-[1.5px] bg-text-primary transition-all duration-300
             ${menuOpen ? "opacity-0" : ""}`}
-          />
-          <span
-            className={`absolute w-5 h-[1.5px] bg-text-primary transition-all duration-300
+            />
+            <span
+              className={`absolute w-5 h-[1.5px] bg-text-primary transition-all duration-300
             ${menuOpen ? "-rotate-45 translate-y-0" : "translate-y-1.5"}`}
-          />
-        </button>
+            />
+          </button>
+        </div>
       </div>
 
       {/* Mobile Menu */}
@@ -109,6 +133,17 @@ const Navbar: React.FC = () => {
               {item.label}
             </Link>
           ))}
+
+          {/* GitHub link in mobile menu */}
+          <a
+            href={portfolio.links.github}
+            target="_blank"
+            rel="noreferrer"
+            className="flex items-center gap-2 font-mono text-sm text-text-secondary hover:text-text-primary transition-colors"
+          >
+            <FaGithub size={14} />
+            GitHub
+          </a>
         </div>
       </div>
     </nav>

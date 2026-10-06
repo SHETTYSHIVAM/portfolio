@@ -14,7 +14,7 @@ const AccentButton: React.FC<AccentButtonProps> = ({
   external = false,
   className = "",
 }) => {
-  const baseClasses = `font-mono text-[0.65rem] tracking-widest px-6 py-2.5 bg-accent rounded text-bg-base hover:bg-accent-hover transition-colors duration-200 ${className}`;
+  const baseClasses = `font-mono text-[0.65rem] tracking-widest px-6 py-2.5 bg-accent rounded text-white hover:bg-accent-hover transition-colors duration-200 ${className}`;
 
   if (external) {
     return (

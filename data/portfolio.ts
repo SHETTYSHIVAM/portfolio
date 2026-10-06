@@ -76,7 +76,7 @@ export interface Publication {
   abstract: string
 }
 
-export type AchievementPlace = "1st" | "2nd" | "3rd" | "Best" | "Top 15" | string
+export type AchievementPlace = "1st" | "2nd" | "3rd" | "Best" | "Top 15" | 'Honorary Mention'
 
 export interface Achievement {
   id: string
@@ -154,21 +154,24 @@ export const portfolio: Portfolio = {
     { id: "hackathons", value: "4", label: "Hackathon Wins" },
     { id: "dataset", value: "3k+", label: "Dataset Images" },
     { id: "users", value: "120+", label: "Users Served" },
-    { id: "eureka", value: "Top 15", label: "IEEE Eu-Reka 2025" },
+    { id: "eureka", value: "Honorary Mention", label: "IEEE Eu-Reka 2026" },
   ],
 
   about: {
     intro: [
-      "AI/ML undergraduate at SMVIT, Udupi, focused on building real-world intelligent systems — not just models, but complete end-to-end pipelines that go from raw satellite imagery or camera frames to deployed APIs and user-facing applications.",
-      "I work at the intersection of machine learning research and systems engineering. Whether it's processing ERA5 meteorological datasets for forest fire prediction, training U-Net models for medical imaging, or deploying containerized inference APIs, I care about production-grade correctness.",
-      "IEEE-published researcher. Hackathon winner. Builder.",
+      "AI/ML undergraduate at SMVIT, Udupi, focused on building real-world intelligent systems — from computer vision and audio classification to edge AI, geospatial ML, and production-ready ML applications.",
+      "I work at the intersection of machine learning and systems engineering. I build end-to-end pipelines that move from raw data and model development to optimized inference, APIs, embedded systems, and user-facing applications.",
+      "IEEE-published researcher. Hackathon winner. Builder."
+
     ],
     focusAreas: [
       "Computer Vision",
-      "Geospatial Machine Learning",
+      "Edge AI & TinyML",
+      "Audio Machine Learning",
       "Medical Imaging",
+      "Geospatial Machine Learning",
       "AI for Agriculture",
-      "Full-Stack ML Systems",
+      "ML Systems & Deployment",
     ],
     roles: [
       {
@@ -191,6 +194,8 @@ export const portfolio: Portfolio = {
         { name: "Keras", icon: "https://cdn.simpleicons.org/keras" },
         { name: "scikit-learn", icon: "https://cdn.simpleicons.org/scikitlearn" },
         { name: "YOLO", icon: "https://cdn.prod.website-files.com/680a070c3b99253410dd3dcf/68e4ec2bdb0747b7b58b1397_Ultralytics%20YOLO-Icon.svg" },
+        { name: "MONAI", icon: "https://raw.githubusercontent.com/Project-MONAI/MONAI/dev/docs/images/MONAI-logo-color.png" },
+        { name: "LangChain", icon: "https://cdn.simpleicons.org/langchain" },
       ],
     },
     {
@@ -212,7 +217,6 @@ export const portfolio: Portfolio = {
         { name: "Django", icon: "https://cdn.simpleicons.org/django" },
         { name: "Node.js", icon: "https://cdn.simpleicons.org/nodedotjs" },
         { name: "Express", icon: "https://cdn.simpleicons.org/express" },
-        { name: "Streamlit", icon: "https://cdn.simpleicons.org/streamlit" },
         { name: "Postman", icon: "https://cdn.simpleicons.org/postman" },
       ],
     },
@@ -221,8 +225,16 @@ export const portfolio: Portfolio = {
       items: [
         { name: "React", icon: "https://cdn.simpleicons.org/react" },
         { name: "Next.js", icon: "https://cdn.simpleicons.org/nextdotjs" },
-        { name: "TypeScript", icon: "https://cdn.simpleicons.org/typescript" },
         { name: "Tailwind CSS", icon: "https://cdn.simpleicons.org/tailwindcss" },
+        { name: "Streamlit", icon: "https://cdn.simpleicons.org/streamlit" },
+      ],
+    },
+    {
+      category: "Edge AI & Embedded",
+      items: [
+        { name: "Raspberry Pi", icon: "https://cdn.simpleicons.org/raspberrypi" },
+        { name: "ESP32", icon: "https://cdn.simpleicons.org/espressif" },
+        { name: "ONNX", icon: "https://cdn.simpleicons.org/onnx" },
       ],
     },
     {
@@ -247,12 +259,13 @@ export const portfolio: Portfolio = {
       ],
     },
     {
-      category: "Specialized Tools",
+      category: "Tools & DevOps",
       items: [
-        { name: "Unity", icon: "https://cdn.simpleicons.org/unity" },
         { name: "Docker", icon: "https://cdn.simpleicons.org/docker" },
         { name: "Git", icon: "https://cdn.simpleicons.org/git" },
+        { name: "GitHub", icon: "https://cdn.simpleicons.org/github" },
         { name: "Roboflow", icon: "/roboflow.png" },
+        { name: "Unity", icon: "https://cdn.simpleicons.org/unity" },
       ],
     },
   ],
@@ -286,12 +299,30 @@ export const portfolio: Portfolio = {
 
   achievements: [
     {
+      id: "eureka-2026",
+      year: "2026",
+      title: "Honorary Mention — IEEE Eu-reka 2026",
+      organization: "IEEE Pune Section",
+      description: "",
+      certificateUrl: "/certificates/eureka-2026.png",
+      place: "Honorary Mention"
+    },
+    {
+      id: "medhadhristi-2026",
+      year: "2026",
+      title: "1st place — Yugma 2.0 Medhadhristi Medical AI Hackathon",
+      organization: "JNNCE, Shivammogga",
+      description: "",
+      certificateUrl: "/certificates/medhadhristi.jpeg",
+      place: "1st"
+    },
+    {
       id: "monaithon-2025",
       year: "2025",
       title: "1st Place — MONAITHON Hackathon",
       organization: "JNNCE, Shivamogga",
       description: "Medical image segmentation with MONAI + U-Net + FastAPI deployment.",
-      certificateUrl: "/assets/certificates/monaithon.jpeg",
+      certificateUrl: "/certificates/monaithon.jpeg",
       place: "1st",
     },
     {
@@ -301,7 +332,7 @@ export const portfolio: Portfolio = {
       organization: "IEEE Pune Section",
       description:
         "Selected among top 15 teams in a national STEAM education innovation competition organized by the IEEE Pune Section.",
-      certificateUrl: "/assets/certificates/eureka.jpeg",
+      certificateUrl: "/certificates/eureka.jpeg",
       place: "Top 15",
     },
     {
@@ -310,7 +341,7 @@ export const portfolio: Portfolio = {
       title: "1st Place — Algorithm Roulette ML Competition",
       organization: "College Tech Fest",
       description: "Competitive machine learning challenge at departmental tech fest.",
-      certificateUrl: "/assets/certificates/algorithm-roulette.jpeg",
+      certificateUrl: "/certificates/algorithm-roulette.jpeg",
       place: "1st",
     },
     {
@@ -319,7 +350,7 @@ export const portfolio: Portfolio = {
       title: "1st Place — UI/UX Design Sprint",
       organization: "YUGMA TechFest, JNNCE",
       description: "Interface design and user experience sprint competition.",
-      certificateUrl: "/assets/certificates/yugma-ui-ux.jpeg",
+      certificateUrl: "/certificates/yugma-ui-ux.jpeg",
       place: "1st",
     },
     {
@@ -328,7 +359,7 @@ export const portfolio: Portfolio = {
       title: "3rd Place — HackYugma Hackathon",
       organization: "YUGMA TechFest, JNNCE",
       description: "AR 3D Car Visualization built with Unity-based augmented reality.",
-      certificateUrl: "/assets/certificates/hack-yugma.jpeg",
+      certificateUrl: "/certificates/hack-yugma.jpeg",
       place: "3rd",
     },
     {
@@ -337,7 +368,7 @@ export const portfolio: Portfolio = {
       title: "Best Project — Lost and Found Portal",
       organization: "SMVIT, First-Year Mini Project",
       description: "First-year mini project awarded best in class.",
-      certificateUrl: "/assets/certificates/lost-found-best-project.jpeg",
+      certificateUrl: "/certificates/lost-found-best-project.jpeg",
       place: "Best",
     },
   ],
@@ -346,7 +377,7 @@ export const portfolio: Portfolio = {
     { label: "Home", href: "/" },
     { label: "Projects", href: "/projects" },
     { label: "Research", href: "/#research" },
-    { label: "Achievements", href: "/#achievements" },
+    { label: "Achievements", href: "/achievements" },
     { label: "Contact", href: "/contact" },
   ],
 
@@ -364,7 +395,7 @@ export const portfolio: Portfolio = {
       "MONAI",
     ],
     ogImage: "/assets/images/og-image.png",
-    siteUrl: "https://shivamshetty.dev",
+    siteUrl: "https://shivamshetty.tech",
   },
 }
 

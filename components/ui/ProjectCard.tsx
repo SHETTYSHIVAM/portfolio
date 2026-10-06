@@ -6,65 +6,92 @@ interface ProjectProps {
   title: string;
   tagline: string;
   techStack: string[];
+  categories?: string[];
 }
 
 interface ProjectCardProps {
   project: ProjectProps;
 }
 
+/**
+ * Returns a subtle category-based accent for project badges.
+ * AI projects get purple accent, full-stack/systems get cyan.
+ */
+function getBadgeColor(badge: string): string {
+  const lower = badge.toLowerCase();
+  if (
+    lower.includes("full-stack") ||
+    lower.includes("full stack") ||
+    lower.includes("web") ||
+    lower.includes("users")
+  ) {
+    return "text-utility";
+  }
+  if (lower.includes("edge") || lower.includes("iot") || lower.includes("embedded")) {
+    return "text-utility";
+  }
+  // Default: AI/ML related → accent (purple)
+  return "text-accent";
+}
+
 const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
+  const badgeColor = getBadgeColor(project.badge);
+
   return (
     <Link href={`/projects/${project.slug}`} className="block group">
       <div
         className="
           relative overflow-hidden
-          bg-surface border border-base rounded-md
+          bg-bg-surface border border-border-base rounded-md
           p-7 cursor-pointer
-          transition-colors duration-200
-          group-hover:border-muted
+          shadow-sm
+          transition-all duration-200
+          group-hover:border-border-muted
+          group-hover:shadow-md
+          group-hover:shadow-accent/5
         "
       >
-        {/* Top accent matrix line */}
+        {/* Top accent line on hover */}
         <div
           className="
-            absolute top-0 left-0 right-0 h-0.5
-            bg-linear-to-r from-accent to-transparent
+            absolute top-0 left-0 right-0 h-px
+            bg-gradient-to-r from-accent via-accent/50 to-transparent
             opacity-0 group-hover:opacity-100
-            transition-opacity duration-200
+            transition-opacity duration-300
           "
         />
 
-        {/* System Badge Tag */}
+        {/* Badge */}
         <p
-          className="
+          className={`
             font-mono text-[10px] tracking-[0.12em] uppercase
-            text-accent mb-3
-          "
+            ${badgeColor} mb-3
+          `}
         >
           {project.badge}
         </p>
 
-        {/* Section Heading */}
+        {/* Title */}
         <h3
           className="
             font-display text-sm font-semibold
-            text-primary mb-2 leading-snug
+            text-text-primary mb-2 leading-snug
           "
         >
           {project.title}
         </h3>
 
-        {/* Project Description Block */}
+        {/* Tagline */}
         <p
           className="
-            font-sans text-[13px] text-secondary
+            font-sans text-[13px] text-text-secondary
             leading-relaxed mb-5
           "
         >
           {project.tagline}
         </p>
 
-        {/* Technical Dependencies Matrix */}
+        {/* Tech Stack */}
         <div className="flex flex-wrap gap-1.5 mb-5 items-center">
           {project.techStack.slice(0, 4).map((tech: string) => (
             <span
@@ -73,7 +100,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
                 font-mono text-[10px]
                 px-2 py-0.5 rounded
                 bg-utility/10 border border-utility/20
-                text-secondary
+                text-text-secondary
               "
             >
               {tech}
@@ -81,13 +108,13 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
           ))}
 
           {project.techStack.length > 4 && (
-            <span className="font-mono text-[10px] text-faint ml-0.5">
+            <span className="font-mono text-[10px] text-text-muted ml-0.5">
               +{project.techStack.length - 4}
             </span>
           )}
         </div>
 
-        {/* Call To Action Indicator */}
+        {/* CTA */}
         <p
           className="
             font-mono text-[11px] font-medium

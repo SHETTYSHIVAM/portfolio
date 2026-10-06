@@ -17,9 +17,9 @@ export default function SectionHeader({
       <SectionLabel number={number}>{number}</SectionLabel>
 
       {/* Title */}
-      <h2 className="font-(--font-sans) text-[clamp(1.6rem,3vw,2.2rem)] tracking-[-0.02em] leading-tight text-(--color-text)">
+      <h2 className="font-display text-[clamp(1.6rem,3vw,2.2rem)] font-semibold tracking-[-0.02em] leading-tight text-text-primary">
         {title}{" "}
-        {accent && <span className="text-(--color-brand)">{accent}</span>}
+        {accent && <span className="text-accent">{accent}</span>}
       </h2>
     </div>
   );

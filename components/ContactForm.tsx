@@ -116,7 +116,7 @@ const ContactForm: React.FC = () => {
           <button
             type="submit"
             disabled={loading}
-            className="px-5 py-2.5 bg-accent hover:bg-accent-hover disabled:bg-border-base text-bg-base rounded font-mono text-xs tracking-wide transition-colors duration-200"
+            className="px-5 py-2.5 bg-accent hover:bg-accent-hover disabled:bg-border-base text-white rounded font-mono text-xs tracking-wide transition-colors duration-200"
           >
             {loading ? "Sending..." : "Send Message"}
           </button>

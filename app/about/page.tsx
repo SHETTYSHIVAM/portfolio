@@ -66,7 +66,7 @@ const About = () => {
               inline-flex items-center gap-2
               px-4 py-2
               text-xs font-mono tracking-wide
-              bg-accent text-bg-base
+              bg-accent text-white
               rounded-md
               hover:bg-accent-hover
               transition-colors

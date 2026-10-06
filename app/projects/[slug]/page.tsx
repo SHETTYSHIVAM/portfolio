@@ -13,19 +13,19 @@ export default async function ProjectDetail({ params }: ProjectPageProps) {
 
   if (!project) {
     return (
-      <div className="min-h-screen flex items-center justify-center font-mono text-xs tracking-wider text-muted bg-base">
+      <div className="min-h-screen flex items-center justify-center font-mono text-xs tracking-wider text-text-muted bg-bg-base">
         [SYSTEM_ERROR]: Project signature not found.
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen py-24 px-6 bg-base text-primary">
+    <div className="min-h-screen py-24 px-6 bg-bg-base text-text-primary">
       <div className="max-w-4xl mx-auto">
         {/* Navigation / Return Link */}
         <Link
           href="/projects"
-          className="mb-10 text-xs font-mono tracking-widest text-muted hover:text-accent transition-colors duration-200 flex items-center gap-2 uppercase"
+          className="mb-10 text-xs font-mono tracking-widest text-text-muted hover:text-accent transition-colors duration-200 flex items-center gap-2 uppercase"
         >
           &larr; return to matrix
         </Link>
@@ -36,11 +36,11 @@ export default async function ProjectDetail({ params }: ProjectPageProps) {
             // {project.badge}
           </p>
 
-          <h1 className="text-3xl md:text-4xl font-bold font-display text-primary mb-4 tracking-tight">
+          <h1 className="text-3xl md:text-4xl font-bold font-display text-text-primary mb-4 tracking-tight">
             {project.title}
           </h1>
 
-          <p className="text-secondary text-sm leading-relaxed max-w-2xl font-sans">
+          <p className="text-text-secondary text-sm leading-relaxed max-w-2xl font-sans">
             {project.tagline}
           </p>
 
@@ -51,7 +51,7 @@ export default async function ProjectDetail({ params }: ProjectPageProps) {
                 href={project.links.github}
                 target="_blank"
                 rel="noreferrer"
-                className="text-xs font-mono font-semibold px-5 py-2.5 bg-accent text-bg-base rounded hover:bg-accent-hover transition-colors duration-200"
+                className="text-xs font-mono font-semibold px-5 py-2.5 bg-accent text-white rounded hover:bg-accent-hover transition-colors duration-200"
               >
                 Codebase // GitHub ↗
               </a>
@@ -62,7 +62,7 @@ export default async function ProjectDetail({ params }: ProjectPageProps) {
                 href={project.links.demo}
                 target="_blank"
                 rel="noreferrer"
-                className="text-xs font-mono px-5 py-2.5 border border-base text-secondary rounded hover:border-muted hover:text-primary transition-colors duration-200 bg-overlay"
+                className="text-xs font-mono px-5 py-2.5 border border-border-base text-text-secondary rounded hover:border-border-muted hover:text-text-primary transition-colors duration-200 bg-bg-surface"
               >
                 Live Deployment ↗
               </a>
@@ -70,11 +70,11 @@ export default async function ProjectDetail({ params }: ProjectPageProps) {
           </div>
 
           {/* Dependencies / Technology Matrix */}
-          <div className="flex flex-wrap gap-1.5 border-b border-base pb-10">
+          <div className="flex flex-wrap gap-1.5 border-b border-border-base pb-10">
             {project.techStack.map((tech: string) => (
               <span
                 key={tech}
-                className="text-[10px] font-mono px-2.5 py-0.5 bg-utility/10 border border-utility/20 text-secondary rounded"
+                className="text-[10px] font-mono px-2.5 py-0.5 bg-utility/10 border border-utility/20 text-text-secondary rounded"
               >
                 {tech}
               </span>
@@ -91,7 +91,7 @@ export default async function ProjectDetail({ params }: ProjectPageProps) {
             <h2 className="text-[11px] tracking-[0.18em] text-utility mb-3 font-mono uppercase">
               {section.label}
             </h2>
-            <p className="text-secondary text-sm leading-relaxed font-sans">
+            <p className="text-text-secondary text-sm leading-relaxed font-sans">
               {section.content}
             </p>
           </div>
@@ -107,7 +107,7 @@ export default async function ProjectDetail({ params }: ProjectPageProps) {
               Dataset Context
             </h2>
 
-            <div className="bg-surface border border-base rounded-md p-6">
+            <div className="bg-bg-surface border border-border-base rounded-md p-6 shadow-sm">
               <div className="grid grid-cols-1 text-wrap sm:grid-cols-3 gap-6 mb-4">
                 {[
                   ["Name", project.dataset.name],
@@ -117,10 +117,10 @@ export default async function ProjectDetail({ params }: ProjectPageProps) {
                   .filter(([_, value]) => value)
                   .map(([label, value]) => (
                     <div key={label}>
-                      <p className="text-[10px] text-muted font-mono tracking-wider uppercase mb-1">
+                      <p className="text-[10px] text-text-muted font-mono tracking-wider uppercase mb-1">
                         {label}
                       </p>
-                      <p className="text-sm font-medium text-primary wrap-break-word">
+                      <p className="text-sm font-medium text-text-primary wrap-break-word">
                         {value}
                       </p>
                     </div>
@@ -128,15 +128,15 @@ export default async function ProjectDetail({ params }: ProjectPageProps) {
               </div>
 
               {project.dataset.preprocessing.length > 0 && (
-                <div className="border-t border-base pt-4 mt-4">
-                  <p className="text-[10px] text-muted font-mono tracking-wider uppercase mb-3">
+                <div className="border-t border-border-base pt-4 mt-4">
+                  <p className="text-[10px] text-text-muted font-mono tracking-wider uppercase mb-3">
                     Pipeline Preprocessing Steps
                   </p>
                   <ul className="space-y-2">
                     {project.dataset.preprocessing.map((step: string) => (
                       <li
                         key={step}
-                        className="text-xs font-mono text-secondary flex gap-2 items-start"
+                        className="text-xs font-mono text-text-secondary flex gap-2 items-start"
                       >
                         <span className="text-accent">&raquo;</span>
                         <span>{step}</span>
@@ -157,26 +157,26 @@ export default async function ProjectDetail({ params }: ProjectPageProps) {
               Architecture &amp; Technical Foundation
             </h2>
 
-            <div className="bg-surface border border-base rounded-md p-6">
+            <div className="bg-bg-surface border border-border-base rounded-md p-6 shadow-sm">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
                 {project.architecture.model && (
                   <div>
-                    <p className="text-[10px] text-muted font-mono tracking-wider uppercase mb-1">
+                    <p className="text-[10px] text-text-muted font-mono tracking-wider uppercase mb-1">
                       {project.categories.includes("Computer Vision") ||
                       project.categories.includes("ML Systems")
                         ? "Model Architecture"
                         : "Core Pattern"}
                     </p>
-                    <p className="text-sm font-medium text-primary">
+                    <p className="text-sm font-medium text-text-primary">
                       {project.architecture.model}
                     </p>
                   </div>
                 )}
                 <div>
-                  <p className="text-[10px] text-muted font-mono tracking-wider uppercase mb-1">
+                  <p className="text-[10px] text-text-muted font-mono tracking-wider uppercase mb-1">
                     Technology Stack
                   </p>
-                  <p className="text-sm font-medium text-primary">
+                  <p className="text-sm font-medium text-text-primary">
                     {project.architecture.framework}
                   </p>
                 </div>
@@ -184,7 +184,7 @@ export default async function ProjectDetail({ params }: ProjectPageProps) {
 
               {project.architecture.keyComponents.length > 0 && (
                 <>
-                  <p className="text-[10px] text-muted font-mono tracking-wider uppercase mb-3">
+                  <p className="text-[10px] text-text-muted font-mono tracking-wider uppercase mb-3">
                     Key Components
                   </p>
                   <ul className="space-y-2">
@@ -192,7 +192,7 @@ export default async function ProjectDetail({ params }: ProjectPageProps) {
                       (component: string) => (
                         <li
                           key={component}
-                          className="text-xs font-mono text-secondary flex gap-2 items-start"
+                          className="text-xs font-mono text-text-secondary flex gap-2 items-start"
                         >
                           <span className="text-accent">&bull;</span>
                           <span>{component}</span>
@@ -219,14 +219,14 @@ export default async function ProjectDetail({ params }: ProjectPageProps) {
             <div className="border-l-2 border-accent pl-8 space-y-8 ml-4">
               {project.pipeline.map((step: any) => (
                 <div key={step.step} className="relative">
-                  <div className="absolute -left-11 translate-x-1/2 top-0.5 w-7 h-7 flex items-center justify-center border-2 border-accent rounded-full text-[10px] font-mono text-accent bg-base z-10">
+                  <div className="absolute -left-11 translate-x-1/2 top-0.5 w-7 h-7 flex items-center justify-center border-2 border-accent rounded-full text-[10px] font-mono text-accent bg-bg-base z-10">
                     {String(step.step).padStart(2, "0")}
                   </div>
 
-                  <p className="text-primary text-sm font-semibold font-display mb-1">
+                  <p className="text-text-primary text-sm font-semibold font-display mb-1">
                     {step.name}
                   </p>
-                  <p className="text-secondary text-xs leading-relaxed font-sans">
+                  <p className="text-text-secondary text-xs leading-relaxed font-sans">
                     {step.description}
                   </p>
                 </div>
@@ -235,7 +235,7 @@ export default async function ProjectDetail({ params }: ProjectPageProps) {
           </div>
         )}
 
-        {/* Results &amp; Outcomes */}
+        {/* Results & Outcomes */}
         {project.results.metrics.length > 0 && (
           <div className="mb-12">
             <h2 className="text-[11px] tracking-[0.18em] text-utility mb-3 font-mono uppercase">
@@ -246,12 +246,12 @@ export default async function ProjectDetail({ params }: ProjectPageProps) {
               {project.results.metrics.map((metric: any) => (
                 <div
                   key={metric.name}
-                  className="bg-surface border border-base rounded-md p-4 text-center"
+                  className="bg-bg-surface border border-border-base rounded-md p-4 text-center shadow-sm"
                 >
                   <p className="text-2xl font-bold font-mono text-accent">
                     {metric.value}
                   </p>
-                  <p className="text-[10px] font-mono text-muted tracking-wider uppercase mt-1.5">
+                  <p className="text-[10px] font-mono text-text-muted tracking-wider uppercase mt-1.5">
                     {metric.name}
                   </p>
                 </div>
@@ -262,7 +262,7 @@ export default async function ProjectDetail({ params }: ProjectPageProps) {
               {project.results.highlights.map((highlight: string) => (
                 <li
                   key={highlight}
-                  className="text-xs font-sans text-secondary flex gap-2.5 items-start"
+                  className="text-xs font-sans text-text-secondary flex gap-2.5 items-start"
                 >
                   <span className="text-status-green font-mono font-bold">
                     ✓

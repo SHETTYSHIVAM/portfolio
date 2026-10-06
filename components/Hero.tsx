@@ -2,15 +2,14 @@
 import React, { useEffect, useRef } from "react";
 import portfolio from "../data/portfolio";
 import Link from "next/link";
-import AccentButton from "@/components/ui/AccentButton";
+import { FaGithub } from "react-icons/fa";
 
-const heroTags = [
-  "Machine Learning",
+const capabilityLabels = [
   "Computer Vision",
-  "Next.js",
-  "FastAPI",
-  "React",
-  "AI Systems",
+  "Generative AI",
+  "Full-Stack",
+  "Edge AI",
+  "Backend Systems",
 ];
 
 const Hero: React.FC = () => {
@@ -34,7 +33,7 @@ const Hero: React.FC = () => {
 
   return (
     <section className="min-h-screen flex items-center pt-20 relative overflow-hidden">
-      {/* ── Grid background ─────────────────────────────────── */}
+      {/* ── Subtle grid background ─────────────────────────── */}
       <div
         className="absolute inset-0 z-0 pointer-events-none"
         style={{
@@ -42,11 +41,11 @@ const Hero: React.FC = () => {
             linear-gradient(var(--border-base) 1px, transparent 1px),
             linear-gradient(90deg, var(--border-base) 1px, transparent 1px)
           `,
-          backgroundSize: "48px 48px",
-          opacity: 0.35,
+          backgroundSize: "80px 80px",
+          opacity: 0.15,
         }}
       />
-      {/* Radial vignette to dissolve the grid toward the right */}
+      {/* Radial vignette to fade the grid */}
       <div
         className="absolute inset-0 z-0 pointer-events-none"
         style={{
@@ -61,82 +60,82 @@ const Hero: React.FC = () => {
           {/* ── LEFT ──────────────────────────────────────────── */}
           <div>
             {/* Availability status */}
-            <div className="flex items-center gap-2 mb-3 font-mono text-[0.6rem] tracking-[0.16em] text-text-muted">
+            <div className="flex items-center gap-2 mb-4 font-mono text-[0.6rem] tracking-[0.16em] text-text-muted">
               <span
                 ref={dotRef}
-                className="w-1.25 h-1.25 rounded-full bg-status-green inline-block"
+                className="w-1.5 h-1.5 rounded-full bg-status-green inline-block"
               />
               <span className="text-status-green">AVAILABLE FOR ROLES</span>
-              <span className="text-text-faint">·</span>
+              <span className="text-text-muted">·</span>
               <span>UDUPI, IN</span>
             </div>
 
             {/* Role badge */}
-            <div className="flex items-center gap-2 mb-5 font-mono text-[0.62rem] tracking-[0.2em] text-accent">
-              <span className="w-1.5 h-1.5 rounded-full bg-accent inline-block animate-pulse" />
-              AI-ML / FULL STACK ENGINEER
+            <div className="flex items-center gap-2 mb-5 font-mono text-[0.62rem] tracking-[0.2em] text-accent uppercase">
+              AI/ML & Full-Stack Engineer
             </div>
 
             {/* Name */}
-            <h1 className="font-display text-[clamp(2.8rem,5vw,4rem)] font-bold leading-[1.05] tracking-[-0.03em] text-text-primary mb-2">
+            <h1 className="font-display text-[clamp(2.8rem,5vw,4rem)] font-bold leading-[1.05] tracking-[-0.03em] text-text-primary mb-4">
               {portfolio.personal.name}
             </h1>
 
-            {/* Accent underline */}
-            <div className="w-14 h-0.75 bg-accent rounded mb-6" />
-
-            {/* Code comment */}
-            <p className="font-mono text-[0.65rem] text-text-faint tracking-[0.02em] mb-4">
-              // building intelligent systems at the intersection of ML &amp;
-              full stack development
-            </p>
-
             {/* Description */}
-            <p className="text-[0.95rem] text-text-secondary leading-relaxed max-w-md mb-8">
-              {portfolio.personal.description}
+            <p className="text-[0.95rem] text-text-secondary leading-relaxed max-w-lg mb-8">
+              I build intelligent software systems — from models and data
+              pipelines to APIs, web applications, and edge deployment.
             </p>
-
-            {/* Tags */}
-            <div className="flex flex-wrap gap-2 mb-10">
-              {heroTags.map((tag) => (
-                <span
-                  key={tag}
-                  className="font-mono text-[0.6rem] tracking-wide px-3 py-1.25
-                             border border-border-muted rounded
-                             text-text-muted
-                             hover:border-accent hover:text-accent
-                             transition-colors duration-200 cursor-default"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
 
             {/* Actions */}
-            <div className="flex gap-3">
-              <AccentButton href="/about#resume-request-section">Download Resume →</AccentButton>
+            <div className="flex gap-3 mb-10">
               <Link
-                href="/contact"
+                href="/projects"
                 className="font-mono text-[0.65rem] tracking-widest px-6 py-2.5
-             border border-border-muted rounded
-             text-text-secondary
-             hover:text-text-primary hover:border-border-muted
-             transition-colors duration-200"
+                           bg-accent rounded text-white
+                           hover:bg-accent-hover transition-colors duration-200"
               >
-                Contact
+                View Projects
               </Link>
+              <a
+                href={portfolio.links.github}
+                target="_blank"
+                rel="noreferrer"
+                className="font-mono text-[0.65rem] tracking-widest px-6 py-2.5
+                           border border-border-base rounded
+                           text-text-secondary
+                           hover:text-text-primary hover:border-border-muted
+                           transition-colors duration-200
+                           flex items-center gap-2"
+              >
+                <FaGithub size={13} />
+                GitHub
+              </a>
+            </div>
+
+            {/* Capability labels */}
+            <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
+              {capabilityLabels.map((label, i) => (
+                <React.Fragment key={label}>
+                  <span className="font-mono text-[0.6rem] tracking-[0.08em] text-text-muted uppercase">
+                    {label}
+                  </span>
+                  {i < capabilityLabels.length - 1 && (
+                    <span className="text-border-muted text-[0.5rem]">·</span>
+                  )}
+                </React.Fragment>
+              ))}
             </div>
           </div>
 
           {/* ── RIGHT — IMAGE ─────────────────────────────────── */}
           <div className="flex justify-center md:justify-end">
             <div className="relative">
-              {/* Blue accent glow (replaces the flat bg glow) */}
+              {/* Subtle accent glow */}
               <div
                 className="absolute inset-0 z-0 rounded-full scale-110"
                 style={{
                   background:
-                    "radial-gradient(ellipse at center, rgba(37,99,235,0.12) 20%, transparent 70%)",
+                    "radial-gradient(ellipse at center, rgba(139,92,246,0.08) 20%, transparent 70%)",
                 }}
               />
 
@@ -144,19 +143,18 @@ const Hero: React.FC = () => {
               <img
                 src="/shivamshetty.png"
                 alt="Shivam Shetty"
-                className="relative z-10 w-70 md:w-85 h-auto object-cover"
+                className="relative z-10 w-70 md:w-85 h-auto object-cover [html[data-theme='dark']_&]:mix-blend-luminosity"
                 style={{
                   maskImage:
                     "linear-gradient(to bottom, black 55%, transparent 100%)",
                   WebkitMaskImage:
                     "linear-gradient(to bottom, black 55%, transparent 100%)",
-                  mixBlendMode: "luminosity",
-                  filter: "contrast(1.05) brightness(0.92)",
+                  filter: "contrast(1.05) brightness(0.95)",
                 }}
               />
 
-              <p className="mt-1 text-[0.58rem] font-mono text-text-faint text-center tracking-widest">
-                Udupi · AI/ML Systems
+              <p className="mt-1 text-[0.58rem] font-mono text-text-muted text-center tracking-widest">
+                Udupi · AI/ML & Full-Stack
               </p>
             </div>
           </div>

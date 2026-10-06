@@ -404,6 +404,256 @@ export const projects: Project[] = [
       ],
     },
   },
+  {
+    id: "animal-sound-recognition",
+    slug: "animal-sound-recognition",
+    title: "Animal Sound Recognition",
+    shortTitle: "Animal Sound Recognition",
+    tagline:
+      "Audio classification pipeline for recognizing animal sounds using YAMNet and classical audio features, optimized for edge deployment.",
+    featured: true,
+    badge: "AUDIO AI",
+    status: "completed",
+    year: 2026,
+
+    links: {
+      github: "https://github.com/SHETTYSHIVAM/animal_sound_recognition.git",
+      demo: null,
+      paper: null,
+    },
+
+    techStack: [
+      "YAMNet",
+      "Python",
+      "TensorFlow",
+      "MFCC",
+      "Mel Spectrogram",
+      "TensorFlow Lite",
+    ],
+
+    categories: ["Audio AI", "Deep Learning", "Edge AI", "TinyML"],
+
+    overview:
+      "Developed an end-to-end audio classification pipeline for animal sound recognition using Google's YAMNet alongside MFCC and Mel spectrogram features. The pipeline was optimized for lightweight inference and edge deployment, achieving a recall of 0.846.",
+
+    problem:
+      "Animal sound analysis can require processing large volumes of audio while operating under constrained computational resources. A lightweight classification pipeline is needed to extract meaningful acoustic features and perform reliable recognition on edge devices.",
+
+    dataset: {
+      name: "Animal Sound Dataset",
+      description:
+        "Audio dataset containing recordings of animal vocalizations used for feature extraction, classification, and evaluation.",
+      size: "Not specified",
+      source: "Dataset-dependent",
+      preprocessing: [
+        "Audio normalization and preprocessing",
+        "MFCC feature extraction",
+        "Mel spectrogram generation",
+        "YAMNet embeddings for transfer learning",
+        "Feature preparation for lightweight inference",
+      ],
+    },
+
+    architecture: {
+      model: "YAMNet + Audio Feature Classification",
+      framework: "TensorFlow",
+      description:
+        "Audio classification pipeline combining YAMNet-based embeddings with traditional acoustic representations such as MFCCs and Mel spectrograms.",
+      keyComponents: [
+        "YAMNet pretrained audio embeddings",
+        "MFCC-based acoustic feature extraction",
+        "Mel spectrogram generation",
+        "Audio classification pipeline",
+        "Lightweight inference optimization for edge devices",
+      ],
+    },
+
+    pipeline: [
+      {
+        step: 1,
+        name: "Audio Preprocessing",
+        description:
+          "Load and preprocess animal audio recordings for consistent classification input.",
+      },
+      {
+        step: 2,
+        name: "Feature Extraction",
+        description:
+          "Extract MFCCs and Mel spectrogram representations from the audio signals.",
+      },
+      {
+        step: 3,
+        name: "YAMNet Embeddings",
+        description:
+          "Generate pretrained YAMNet audio embeddings to capture high-level acoustic features.",
+      },
+      {
+        step: 4,
+        name: "Classification",
+        description:
+          "Use extracted audio representations for animal sound classification.",
+      },
+      {
+        step: 5,
+        name: "Evaluation",
+        description:
+          "Evaluate classification performance with recall as a key metric.",
+      },
+      {
+        step: 6,
+        name: "Edge Optimization",
+        description:
+          "Optimize the inference pipeline for deployment on resource-constrained TinyML and edge platforms.",
+      },
+    ],
+
+    results: {
+      metrics: [
+        {
+          name: "Recall",
+          value: "0.846",
+          note: "Primary reported classification recall.",
+        },
+      ],
+
+      highlights: [
+        "Achieved 0.846 recall for animal sound recognition",
+        "Combined YAMNet embeddings with MFCC and Mel spectrogram features",
+        "Optimized the inference pipeline for TinyML and edge deployment",
+      ],
+    },
+  },
+
+
+  {
+    id: "edge-ai-beehive-monitoring",
+    slug: "edge-ai-beehive-monitoring",
+    title: "Edge AI Beehive Monitoring",
+    shortTitle: "Beehive Monitoring",
+    tagline:
+      "ESP32-based edge AI system for real-time beehive health monitoring using environmental, weight, and acoustic sensing.",
+    featured: true,
+    badge: "EDGE AI + IoT",
+    status: "completed",
+    year: 2026,
+
+    links: {
+      github: "https://github.com/SHETTYSHIVAM/beehive",
+      demo: null,
+      paper: null,
+    },
+
+    techStack: [
+      "ESP32",
+      "Python",
+      "MFCC",
+      "TensorFlow",
+      "DHT22",
+      "HX711",
+      "INMP441",
+      "Firebase",
+    ],
+
+    categories: ["Edge AI", "IoT", "Audio AI", "Embedded Systems"],
+
+    overview:
+      "Built an ESP32-based IoT monitoring system for beehive health analysis by combining environmental, weight, and acoustic sensors. Developed an MFCC-based audio classification pipeline to analyze bee sounds and support lightweight edge inference.",
+
+    problem:
+      "Beehive health can be affected by changes in environmental conditions, colony activity, and acoustic behavior. Continuous monitoring across multiple sensor modalities can provide useful signals for detecting changes in hive conditions without relying entirely on manual inspection.",
+
+    dataset: {
+      name: "Beehive Sensor & Audio Data",
+      description:
+        "Multimodal hive monitoring data consisting of environmental measurements, hive weight readings, and recorded bee sounds.",
+      size: "Project-specific",
+      source: "ESP32 sensor collection",
+      preprocessing: [
+        "Environmental sensor data collection",
+        "Hive weight measurement using HX711",
+        "Audio recording using microphone sensor",
+        "Audio preprocessing and normalization",
+        "MFCC feature extraction for bee-sound analysis",
+      ],
+    },
+
+    architecture: {
+      model: "MFCC-based Audio Classification",
+      framework: "Python + ESP32",
+      description:
+        "Multimodal edge monitoring architecture combining ESP32 sensor acquisition with lightweight audio feature extraction and classification for bee-sound analysis.",
+      keyComponents: [
+        "ESP32-based sensor acquisition",
+        "DHT22 temperature and humidity monitoring",
+        "HX711 load-cell based hive weight monitoring",
+        "Microphone-based acoustic monitoring",
+        "MFCC feature extraction",
+        "Lightweight edge audio inference",
+        "Firebase-based sensor data storage",
+      ],
+    },
+
+    pipeline: [
+      {
+        step: 1,
+        name: "Sensor Acquisition",
+        description:
+          "Collect temperature, humidity, hive weight, and acoustic data using ESP32-connected sensors.",
+      },
+      {
+        step: 2,
+        name: "Environmental Monitoring",
+        description:
+          "Record DHT22 environmental measurements and HX711-based hive weight readings.",
+      },
+      {
+        step: 3,
+        name: "Audio Recording",
+        description:
+          "Capture bee sounds using a microphone connected to the embedded monitoring system.",
+      },
+      {
+        step: 4,
+        name: "Audio Feature Extraction",
+        description:
+          "Process bee sounds and extract MFCC features for acoustic classification.",
+      },
+      {
+        step: 5,
+        name: "Edge Inference",
+        description:
+          "Perform lightweight audio classification suitable for resource-constrained edge deployment.",
+      },
+      {
+        step: 6,
+        name: "Data Storage",
+        description:
+          "Store collected hive monitoring data for visualization and further analysis.",
+      },
+    ],
+
+    results: {
+      metrics: [
+        {
+          name: "Sensors",
+          value: "3+",
+          note: "Environmental, weight, and acoustic sensing modalities.",
+        },
+        {
+          name: "Platform",
+          value: "ESP32",
+          note: "Embedded edge monitoring platform.",
+        },
+      ],
+
+      highlights: [
+        "Built an ESP32-based multimodal beehive monitoring system",
+        "Integrated environmental, weight, and acoustic sensing",
+        "Developed MFCC-based bee-sound classification",
+        "Designed lightweight inference for edge deployment",
+      ],
+    },
+  },
 ]
 
 // ─── Helpers ─────────────────────────────────────────────────
