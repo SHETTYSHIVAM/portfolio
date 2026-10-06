@@ -97,18 +97,21 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
             <span
               key={tech}
               className="
+                inline-flex items-center
                 font-mono text-[10px]
                 px-2 py-0.5 rounded
                 bg-utility/10 border border-utility/20
                 text-text-secondary
+                max-w-full truncate
               "
+              title={tech}
             >
               {tech}
             </span>
           ))}
 
           {project.techStack.length > 4 && (
-            <span className="font-mono text-[10px] text-text-muted ml-0.5">
+            <span className="font-mono text-[10px] text-text-muted ml-0.5 shrink-0">
               +{project.techStack.length - 4}
             </span>
           )}

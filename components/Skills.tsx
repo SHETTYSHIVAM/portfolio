@@ -38,33 +38,31 @@ const Skills: React.FC = () => {
                 </div>
 
                 {/* Skills */}
-                <div className="grid grid-cols-2 gap-2.5">
-
+                <div className="flex flex-wrap gap-2">
                   {cat.items.map((item: any) => (
                     <div
                       key={item.name}
-                      className="flex items-center gap-2.5 px-2.5 py-2
-                                 border border-border-base rounded
-                                 text-text-secondary text-xs font-mono
-                                 hover:border-border-muted hover:text-text-primary
+                      className="inline-flex items-center gap-2 px-2.5 py-1.5
+                                 border border-border-base rounded bg-bg-base/40
+                                 text-text-secondary text-[11px] font-mono
+                                 hover:border-border-muted hover:text-text-primary hover:bg-bg-base/70
                                  transition-colors duration-200"
                     >
                       {item.icon ? (
                         <img
                           src={item.icon}
                           alt={item.name}
-                          className="w-5 h-5"
+                          className="w-4 h-4 shrink-0 object-contain"
                         />
                       ) : (
-                        <div className="w-5 h-5 flex items-center justify-center border border-border-base rounded text-[9px] text-text-muted">
+                        <div className="w-4 h-4 shrink-0 flex items-center justify-center border border-border-base rounded text-[8px] text-text-muted">
                           {item.name[0]}
                         </div>
                       )}
 
-                      <span className="text-[11px]">{item.name}</span>
+                      <span className="whitespace-nowrap">{item.name}</span>
                     </div>
                   ))}
-
                 </div>
               </div>
             );

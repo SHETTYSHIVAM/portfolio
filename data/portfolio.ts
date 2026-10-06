@@ -120,8 +120,8 @@ export interface Portfolio {
 export const portfolio: Portfolio = {
   personal: {
     name: "Shivam Shetty",
-    title: "AI / Machine Learning Engineer",
-    subtitle: "Full-Stack AI Systems Developer",
+    title: "AI & Full-Stack Engineer",
+    subtitle: "Building Intelligent Systems",
     description:
       "Building intelligent systems using machine learning, geospatial data processing, and scalable web applications.",
     location: "Udupi, Karnataka, India",

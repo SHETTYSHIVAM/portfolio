@@ -106,7 +106,6 @@ const About = () => {
             <div className="space-y-3">
               {[
                 "Generative AI apps with Langchain",
-                "Full Stack app for college hostel",
                 "Edge ML deployment on ESP32 (TinyML)",
               ].map((item) => (
                 <div
@@ -174,26 +173,10 @@ const About = () => {
 
         {/* ── RIGHT COLUMN ───────────────────────────────── */}
         <div className="flex flex-col gap-14">
-          {/* Philosophy */}
-          <div>
-            <SectionHeader number="// 05" title="Philosophy" />
-            <div className="border border-border-base bg-bg-surface rounded p-5 space-y-3 text-sm">
-              <p className="text-text-secondary">
-                I prefer{" "}
-                <span className="text-text-primary">systems that ship</span> over
-                experiments that stay in notebooks.
-              </p>
-              <ul className="space-y-1 text-text-muted">
-                <li>• Simple models deployed &gt; complex models unused</li>
-                <li>• Reliability &gt; novelty</li>
-                <li>• Iteration speed is a competitive advantage</li>
-              </ul>
-            </div>
-          </div>
 
           {/* Roles */}
           <div>
-            <SectionHeader number="// 06" title="Roles & Involvement" />
+            <SectionHeader number="// 05" title="Roles & Involvement" />
             <div className="space-y-3">
               {portfolio.about.roles.map((role) => (
                 <div
@@ -217,7 +200,7 @@ const About = () => {
 
           {/* Achievements Timeline */}
           <div>
-            <SectionHeader number="// 07" title="Highlights" />
+            <SectionHeader number="// 06" title="Highlights" />
             <div className="relative pl-5">
               <div className="absolute left-0 top-2 bottom-2 w-px bg-border-base" />
 
